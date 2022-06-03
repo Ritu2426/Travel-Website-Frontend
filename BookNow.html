@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book your package here!</title>
+    <link rel="stylesheet" href="style.css">
+    <!--Favicon-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        text-decoration: none;
+        transition: all .2s linear;
+    }
+        
+    :root{
+        --blue:#179ec0;
+    }
+  
+    button {
+        margin-top: 20px;
+        margin-left: 80%;
+        width: 20%;
+        height: 7vh;
+        font-size: 1.2rem;
+        background-color: #c01717;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: rgba(49, 46, 46, 0.397);
+        color: white;
+        border: none;
+    }
+    .book .heading{
+        text-align: center;
+        padding: 2rem 0
+      }
+      
+    .book .heading span{
+        font-size: 2.4rem;
+        background:rgba(0, 217, 255, 0.2);
+        color:var(--blue);
+        border-radius: 70%;
+        padding:.2rem 1rem;
+        text-transform: capitalize;
+        font-weight: 700;
+      }
+      
+    .book .heading span.space{
+        background:none;
+      }
+      
+</style>
+
+    <!-- book section starts -->
+    <section class="book" id="book">
+
+        <h1 class="heading">
+            <span>B</span>
+            <span>O</span>
+            <span>O</span>
+            <span>K</span>
+            <span class="space"></span>
+            <span>N</span>
+            <span>O</span>
+            <span>W</span>
+        </h1>
+
+        <div class="row">
+            <form method="post" autocomplete="off" name="BookNow">
+                <div class="input-Box">
+                    <h3>From</h3>
+                    <input type="text" name="Place_To_Go" placeholder="Place name" required>
+                </div>
+
+                <div class="input-Box">
+                    <h3>Where To Go</h3>
+                    <input type="text" name="Where_To_Go" placeholder="Place name" required>
+                </div>
+
+                <div class="input-Box">
+                    <h3>Adults</h3>
+                    <input type="number" name="Adults" placeholder="Number of Adults" required>
+                </div>
+
+                <div class="input-Box">
+                    <h3>Children</h3>
+                    <input type="number" name="Children" placeholder="Number of child" required>
+                </div>
+
+                <div class="input-Box">
+                    <h3>When you want to go</h3>
+                    <input type="date" name="When_To_Go" required>
+                </div>
+
+                <div class="input-Box">
+                    <h3>Delay (If no tickets are available at that day)</h3>
+                    <input type="number" name="Delay" placeholder="How much delay is ok for you?" required>
+                </div>
+
+                <div class="inputBox">
+                    <h3>Way of transport</h3>
+                    <select class="transport" name="Way_Of_Transport">
+                        <option value="Flight">Flight</option>
+                        <option value="Train">Train</option>
+                        <option value="Bus">Road-Way</option>
+                    </select>
+                </div>
+
+                <div class="input-Box">
+                    <h3>Email Id</h3>
+                    <input type="text" name="E-mail" placeholder="Enter Your Email Id" required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                </div>
+
+                <div class="input-Box">
+                    <h3> Mobile Number </h3>
+                    <input type="tel" pattern="[789][0-9]{9}" name="Phone_No" required
+                        placeholder="Enter Your Mobile Number">
+                </div>
+                <input type="submit" class="btn" value="Book Now"> 
+            </form>
+            <a href="index.html"><button>Cancel</button></a>
+        </div>
+    </section>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbylSz3mJqqeDHD0APVtux-Fm_aPLwWfI1bm_0z1lRbx1lTxvrF2ZhBPeod_NWqnym0/exec'
+        const form = document.forms['BookNow']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+                document.BookNow.reset()
+        })
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- book section ends -->
+</body>
+
+</html>
